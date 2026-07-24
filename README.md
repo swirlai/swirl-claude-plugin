@@ -58,4 +58,6 @@ contents; configuration examples use placeholders such as `<api-key>` and
 
 https://docs.swirlaiconnect.com
 
-© SWIRL Corporation. License to be determined before publication.
+## License
+
+Apache 2.0 — see [LICENSE](LICENSE). © SWIRL Corporation.
