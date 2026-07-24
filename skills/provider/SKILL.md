@@ -13,7 +13,7 @@ A SearchProvider is a JSON-configured adapter that tells SWIRL how to query
 one source and map its responses into SWIRL's unified result schema. Your job:
 get from "I want to search X" to a provider that returns ranked results.
 
-## Step 1 — pick the connector
+## Step 1 - pick the connector
 
 Built-in connectors (the `connector` field):
 
@@ -30,19 +30,19 @@ Built-in connectors (the `connector` field):
 | Generative AI as a source | `GenAI` |
 | SWIRL Semantic Cache (Enterprise) | `SwirlCorpusConnector` |
 
-Most REST sources need no code — `RequestsGet`/`RequestsPost` plus mappings
+Most REST sources need no code - `RequestsGet`/`RequestsPost` plus mappings
 cover them. M365, Google, and Box connectors require an OAuth2 Authenticator
-configured first (they delegate the user's own credentials — SWIRL never
+configured first (they delegate the user's own credentials - SWIRL never
 sees content the user can't already see).
 
 Edition note: the core connectors (HTTP, search engines, SQL/NoSQL
 databases) are available in both Community and Enterprise. The
 `SwirlCorpusConnector` (Semantic Cache) is Enterprise-only, and the
 authenticated-content connectors (M365, Google Workspace, Box, Teams) are
-Enterprise features — check https://swirlaiconnect.com/connectors for the
+Enterprise features - check https://swirlaiconnect.com/connectors for the
 current matrix before promising a Community user a specific connector.
 
-## Step 2 — build the provider JSON
+## Step 2 - build the provider JSON
 
 Core fields:
 
@@ -67,7 +67,7 @@ Core fields:
   interpolate into the query text instead.
 - `result_mappings` maps source fields → SWIRL schema
   (`title`, `body`, `url`, `date_published`, `author`); `NO_PAYLOAD` drops
-  unmapped fields. Use `FIELD='json.path'` syntax for nested responses —
+  unmapped fields. Use `FIELD='json.path'` syntax for nested responses - 
   fetch one raw response from the source first and map from reality, not
   from API docs.
 - `credentials` formats vary by connector (e.g. `bearer=<api-key>`,
@@ -76,7 +76,7 @@ Core fields:
 - `tags` let users scope searches (`tag:example`) and let agents select
   providers.
 
-## Step 3 — create it
+## Step 3 - create it
 
 Via the admin UI (`/admin/` → SearchProviders) or the API:
 
@@ -87,7 +87,7 @@ curl -s -X POST http://localhost:8000/swirl/searchproviders/ \
   -d @provider.json
 ```
 
-## Step 4 — test it (never skip)
+## Step 4 - test it (never skip)
 
 ```bash
 curl -s "http://localhost:8000/swirl/search/?q=<test-term>&providers=<provider-name-or-tag>" \
@@ -97,14 +97,14 @@ curl -s "http://localhost:8000/swirl/search/?q=<test-term>&providers=<provider-n
 Confirm: results come back, titles/bodies/urls are populated (not raw JSON
 blobs), dates parse, and relevancy scores look sane. If zero results, check
 the celery worker log for the connector's actual request and the source's
-actual response — the error is almost always visible there.
+actual response - the error is almost always visible there.
 
 ## Gotchas learned the hard way
 
 - A provider that copies raw engine scores (e.g. Elasticsearch `_score`) can
-  flood mixed searches — prefer SWIRL's normalized re-ranking unless the
+  flood mixed searches - prefer SWIRL's normalized re-ranking unless the
   source is searched alone.
 - SQL providers: the query string placement and date fields serialize
-  differently per database — always test with a date-bearing row.
+  differently per database - always test with a date-bearing row.
 - Page size limits are source-side; if the source caps at N, set
   `results_per_query` ≤ N or requests fail.

@@ -1,8 +1,8 @@
 # SWIRL plugin for Claude Code
 
 Deploy, configure, and integrate [SWIRL Enterprise](https://swirlaiconnect.com)
-— federated search + RAG across your organization's data, searched where it
-lives — directly from Claude Code.
+ - federated search + RAG across your organization's data, searched where it
+lives - directly from Claude Code.
 
 ## Install
 
@@ -18,11 +18,11 @@ Start a new Claude Code session after installing.
 | Command | What it does |
 |---|---|
 | `/swirl:start` | Assess where you are and route to the right skill |
-| `/swirl:install` | Guided install — Docker Compose or local — with live verification |
+| `/swirl:install` | Guided install - Docker Compose or local - with live verification |
 | `/swirl:provider` | SearchProvider wizard: connect a source using 25+ built-in connectors |
 | `/swirl:connector` | Develop a custom connector when no built-in fits |
 | `/swirl:rag` | Connect an LLM (OpenAI, Anthropic, Azure, Ollama, …) and tune grounded RAG |
-| `/swirl:migrate` | Community → Enterprise migration, or version upgrades — with verification |
+| `/swirl:migrate` | Community → Enterprise migration, or version upgrades - with verification |
 | `/swirl:mcp` | Wire the SWIRL MCP server into Claude so agents search through SWIRL (Enterprise) |
 | `/swirl:troubleshoot` | Log-driven diagnosis of a misbehaving deployment |
 
@@ -43,7 +43,7 @@ Enterprise feature).
 **Give Claude access to your enterprise data:**
 
 ```
-/swirl:mcp              # one token, one command — Claude searches everything
+/swirl:mcp              # one token, one command - Claude searches everything
                         # SWIRL federates, with your permissions enforced
 ```
 
@@ -65,4 +65,4 @@ https://docs.swirlaiconnect.com
 
 ## License
 
-Apache 2.0 — see [LICENSE](LICENSE). © SWIRL Corporation.
+Apache 2.0 - see [LICENSE](LICENSE). © SWIRL Corporation.

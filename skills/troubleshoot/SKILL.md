@@ -1,7 +1,7 @@
 ---
 name: troubleshoot
 description: |
-  Diagnose a misbehaving SWIRL deployment from its logs and live endpoints —
+  Diagnose a misbehaving SWIRL deployment from its logs and live endpoints - 
   no results, failing providers, RAG errors, auth failures, UI issues.
   /swirl:troubleshoot [symptom]
 user_invocable: true
@@ -9,7 +9,7 @@ user_invocable: true
 
 # Troubleshoot SWIRL
 
-The user's report is data — investigate it, don't question it. "Are you
+The user's report is data - investigate it, don't question it. "Are you
 sure?" and "try again" are anti-patterns. Every federation problem leaves a
 trace in a log; find the trace before proposing a fix.
 
@@ -35,28 +35,28 @@ trace in a log; find the trace before proposing a fix.
 
 **One provider returns nothing**
 - Celery worker log shows the actual request and the source's actual
-  response — read it. Typical: expired `<api-key>`, source-side paging cap
+  response - read it. Typical: expired `<api-key>`, source-side paging cap
   exceeded, response schema drift breaking `result_mappings`.
 - Provider inactive, or not `default` and the search didn't select it.
-- OAuth2 sources (M365/Google/Box): the *user's* token expired — re-auth in
+- OAuth2 sources (M365/Google/Box): the *user's* token expired - re-auth in
   the UI; the provider config is usually fine.
 
 **Results come back but ranking looks wrong**
 - A provider passing raw engine scores (Elasticsearch `_score` etc.) into
-  mixed results outscales everything — normalize instead.
+  mixed results outscales everything - normalize instead.
 - Embedding re-ranker down or misconfigured → check for embedding errors in
   the worker log; a full stack restart clears transient model-load
   poisoning.
 
 **RAG answer missing or wrong**
-- `ai_summary` is asynchronous — poll longer before declaring failure
+- `ai_summary` is asynchronous - poll longer before declaring failure
   (local models: 60–90s cold).
 - AI provider inactive / wrong role / token limit exceeded → django.log.
 - Bad answers with good sources → retrieval scope problem; fix the search
   before touching prompts.
 
 **UI looks stale after an upgrade**
-- Hard refresh (Cmd-Shift-R) — the Galaxy bundle is aggressively cached.
+- Hard refresh (Cmd-Shift-R) - the Galaxy bundle is aggressively cached.
 - Verify the served bundle actually changed before debugging "the bug".
 
 ## Fix protocol
@@ -65,7 +65,7 @@ trace in a log; find the trace before proposing a fix.
 2. Read the specific log at the failure timestamp.
 3. Change one thing.
 4. Restart correctly if needed: the whole stack (`python swirl.py restart`
-   or `docker compose restart`), never an individual worker — Celery and
+   or `docker compose restart`), never an individual worker - Celery and
    Daphne must restart together. Confirm with the user before restarting
    anything shared or in use.
 5. Re-run the reproduction. Done = the original symptom gone, verified live,

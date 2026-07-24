@@ -9,7 +9,7 @@ user_invocable: true
 
 # SWIRL Orchestrator
 
-You are helping a user deploy or integrate SWIRL Enterprise — a federated
+You are helping a user deploy or integrate SWIRL Enterprise - a federated
 search engine with RAG. SWIRL searches data where it lives (SharePoint,
 OneDrive, Box, databases, search engines, web APIs); nothing is copied or
 re-indexed. NLP + embedding re-ranking unify results from every source, and
@@ -20,22 +20,22 @@ citations.
 
 Figure out where the user is in their SWIRL journey and route them:
 
-1. **No SWIRL running yet** → `/swirl:install` — guided Docker or local install.
-2. **SWIRL running, wants to add a data source** → `/swirl:provider` — the
+1. **No SWIRL running yet** → `/swirl:install` - guided Docker or local install.
+2. **SWIRL running, wants to add a data source** → `/swirl:provider` - the
    SearchProvider wizard (25+ built-in connectors).
-3. **Source exists but no built-in connector fits** → `/swirl:connector` —
+3. **Source exists but no built-in connector fits** → `/swirl:connector` - 
    develop a custom connector.
-4. **Wants AI answers / RAG over results** → `/swirl:rag` — AI provider
+4. **Wants AI answers / RAG over results** → `/swirl:rag` - AI provider
    setup and RAG tuning.
 5. **Wants Claude (or another agent) to search through SWIRL** → `/swirl:mcp`
-   — wire up the SWIRL MCP server.
+   - wire up the SWIRL MCP server.
 6. **Moving Community → Enterprise, or upgrading versions** →
-   `/swirl:migrate` — inventory, config carry-over, verification.
-7. **Something is broken** → `/swirl:troubleshoot` — log-driven diagnosis.
+   `/swirl:migrate` - inventory, config carry-over, verification.
+7. **Something is broken** → `/swirl:troubleshoot` - log-driven diagnosis.
 
 ## First actions
 
-Before recommending anything, establish the facts — do not assume:
+Before recommending anything, establish the facts - do not assume:
 
 - Is SWIRL running? `curl -s <base-url>/swirl/sapi/branding/` (default base
   url `http://localhost:8000`). A JSON response means it's up.
@@ -48,9 +48,9 @@ Before recommending anything, establish the facts — do not assume:
 
 - Never print API keys, tokens, client secrets, or license JSON. Use
   placeholders: `<api-key>`, `<client-secret>`, `<license-json>`.
-- SWIRL's API is mounted under both `/swirl/...` and `/api/swirl/...` — the
+- SWIRL's API is mounted under both `/swirl/...` and `/api/swirl/...` - the
   same views. Either prefix works with curl.
-- Documentation: https://docs.swirlaiconnect.com — link to it for anything
+- Documentation: https://docs.swirlaiconnect.com - link to it for anything
   beyond these skills' scope.
 - Verify every change against the live system (a real search that returns
   results) before declaring it done.
