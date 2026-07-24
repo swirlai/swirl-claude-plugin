@@ -1,0 +1,44 @@
+{
+  "name": "swirl",
+  "owner": {
+    "name": "SWIRL Corporation",
+    "url": "https://swirlaiconnect.com"
+  },
+  "metadata": {
+    "description": "SWIRL Enterprise integration toolkit for Claude Code",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "swirl",
+      "strict": false,
+      "description": "Deploy, configure, and integrate SWIRL Enterprise federated search + RAG. Guided install (Docker or local), SearchProvider wizard for 25+ connectors, custom connector development, AI provider / RAG setup, log-driven troubleshooting, and MCP hookup so Claude can search your sources through SWIRL.",
+      "version": "0.1.0",
+      "author": {
+        "name": "SWIRL Corporation",
+        "url": "https://swirlaiconnect.com"
+      },
+      "homepage": "https://github.com/swirlai/swirl-claude-plugin",
+      "tags": [
+        "swirl",
+        "federated-search",
+        "enterprise-search",
+        "rag",
+        "search-provider",
+        "connectors",
+        "mcp",
+        "retrieval"
+      ],
+      "source": "./",
+      "skills": [
+        "./skills/start",
+        "./skills/install",
+        "./skills/provider",
+        "./skills/connector",
+        "./skills/rag",
+        "./skills/troubleshoot",
+        "./skills/mcp"
+      ]
+    }
+  ]
+}
