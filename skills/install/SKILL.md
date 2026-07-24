@@ -17,26 +17,32 @@ with a live search. Ask which edition they have before anything else:
 
 ## Path A — Docker Compose (recommended)
 
-1. Confirm Docker Desktop (or engine) is installed and running:
-   `docker info` must succeed.
-2. Community:
-   ```bash
-   git clone https://github.com/swirlai/swirl-search
-   cd swirl-search
-   docker compose up -d
-   ```
-   Enterprise: use the compose bundle provided by SWIRL. The license goes in
-   the environment file as `SWIRL_LICENSE=<license-json>` — never commit that
-   file, never echo its contents.
-3. Wait for the stack: the `swirl` container logs show the init sequence
-   (migrations, seed data) before Django starts. `docker compose logs -f swirl`
-   until you see the server accepting connections.
-4. UI at `http://localhost:8000/galaxy/` — default admin credentials are set
-   during init; have the user change them immediately.
+Confirm Docker Desktop (or engine) is installed and running: `docker info`
+must succeed.
 
-## Path B — local development install
+**Community** (documented quick start):
+```bash
+curl https://raw.githubusercontent.com/swirlai/swirl-search/main/docker-compose.yaml -o docker-compose.yaml
+docker-compose pull && docker-compose up
+```
+Default login is `admin` / `password` — have the user change it immediately.
 
-Requires Python 3.11+ and (Enterprise) PostgreSQL for production-like use:
+**Enterprise**: use the compose bundle provided by SWIRL. The license goes
+in the environment file as `SWIRL_LICENSE=<license-json>` — never commit
+that file, never echo its contents.
+
+Either way, wait for the stack: the `swirl` container logs show the init
+sequence (migrations, seed data) before Django starts —
+`docker compose logs -f swirl` until the server accepts connections. UI at
+`http://localhost:8000/galaxy/`.
+
+## Path B — local (non-Docker) install
+
+**Community**: follow the Quick Start at https://docs.swirlaiconnect.com —
+the Docker path above is the supported fast route; don't improvise local
+commands from memory.
+
+**Enterprise** (requires Python 3.11+; PostgreSQL for production-like use):
 
 ```bash
 git clone -b main <swirl-repo-url> swirl

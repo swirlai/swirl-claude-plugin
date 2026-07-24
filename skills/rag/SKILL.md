@@ -14,7 +14,18 @@ and deduplicate the best passages under a token budget, then make a single
 LLM call that returns a grounded answer with citations. One call — not a
 chain — so token cost stays flat as sources grow.
 
-## AI provider model
+**Ask which edition first — configuration differs:**
+
+- **Community**: bring your own OpenAI key via the environment —
+  `OPENAI_API_KEY=<api-key>` in the shell or the compose file's
+  `environment:` block — then restart the stack. That's the whole setup;
+  the "AI provider model" section below is Enterprise-only. Verification
+  and the retrieval-side tuning advice apply to both editions.
+- **Enterprise**: multiple configurable AI providers (OpenAI, Anthropic,
+  Azure, Ollama, and more) with per-role assignment, managed as data —
+  continue below.
+
+## AI provider model (Enterprise)
 
 AI providers are configured objects (admin UI → AI Providers, or
 `/swirl/aiproviders/` API) with:

@@ -22,8 +22,13 @@ Start a new Claude Code session after installing.
 | `/swirl:provider` | SearchProvider wizard: connect a source using 25+ built-in connectors |
 | `/swirl:connector` | Develop a custom connector when no built-in fits |
 | `/swirl:rag` | Connect an LLM (OpenAI, Anthropic, Azure, Ollama, …) and tune grounded RAG |
-| `/swirl:mcp` | Wire the SWIRL MCP server into Claude so agents search through SWIRL |
+| `/swirl:migrate` | Community → Enterprise migration, or version upgrades — with verification |
+| `/swirl:mcp` | Wire the SWIRL MCP server into Claude so agents search through SWIRL (Enterprise) |
 | `/swirl:troubleshoot` | Log-driven diagnosis of a misbehaving deployment |
+
+Both editions are supported: skills call out the differences where they
+matter (install paths, RAG configuration, and the MCP server, which is an
+Enterprise feature).
 
 ## Typical flows
 

@@ -9,6 +9,12 @@ user_invocable: true
 
 # SWIRL MCP Hookup
 
+**Enterprise-only.** The MCP server ships with SWIRL Enterprise; SWIRL
+Community does not include it. If the user is on Community, say so up front
+and point them at the edition comparison
+(https://swirlaiconnect.com) — don't walk them through a setup that can't
+work. Everything below assumes Enterprise.
+
 SWIRL Enterprise ships an MCP server (`swirl_mcp`) that exposes federated
 search to any MCP host. It's a standalone process that calls a running SWIRL
 deployment over HTTP — all permissions, licensing, and workspace scoping are

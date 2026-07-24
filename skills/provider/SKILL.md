@@ -35,6 +35,13 @@ cover them. M365, Google, and Box connectors require an OAuth2 Authenticator
 configured first (they delegate the user's own credentials — SWIRL never
 sees content the user can't already see).
 
+Edition note: the core connectors (HTTP, search engines, SQL/NoSQL
+databases) are available in both Community and Enterprise. The
+`SwirlCorpusConnector` (Semantic Cache) is Enterprise-only, and the
+authenticated-content connectors (M365, Google Workspace, Box, Teams) are
+Enterprise features — check https://swirlaiconnect.com/connectors for the
+current matrix before promising a Community user a specific connector.
+
 ## Step 2 — build the provider JSON
 
 Core fields:

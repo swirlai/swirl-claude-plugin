@@ -29,7 +29,9 @@ Figure out where the user is in their SWIRL journey and route them:
    setup and RAG tuning.
 5. **Wants Claude (or another agent) to search through SWIRL** → `/swirl:mcp`
    — wire up the SWIRL MCP server.
-6. **Something is broken** → `/swirl:troubleshoot` — log-driven diagnosis.
+6. **Moving Community → Enterprise, or upgrading versions** →
+   `/swirl:migrate` — inventory, config carry-over, verification.
+7. **Something is broken** → `/swirl:troubleshoot` — log-driven diagnosis.
 
 ## First actions
 
