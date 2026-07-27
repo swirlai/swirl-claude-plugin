@@ -12,8 +12,8 @@ Walk the user through getting SWIRL running, then verify it actually works
 with a live search. Ask which edition they have before anything else:
 
 - **SWIRL Community** - open source, https://github.com/swirlai/swirl-search
-- **SWIRL Enterprise** - licensed; the user receives an image reference,
-  a Docker Compose bundle, and a license file from SWIRL.
+- **SWIRL Enterprise** - licensed; the Docker Compose bundle is public at
+  https://github.com/swirlai/docker-compose, the license file comes from SWIRL.
 
 ## Path A - Docker Compose (recommended)
 
@@ -27,9 +27,18 @@ docker-compose pull && docker-compose up
 ```
 Default login is `admin` / `password` - have the user change it immediately.
 
-**Enterprise**: use the compose bundle provided by SWIRL. The license goes
-in the environment file as `SWIRL_LICENSE=<license-json>` - never commit
-that file, never echo its contents.
+**Enterprise** (documented quick start):
+```bash
+git clone https://github.com/swirlai/docker-compose.git swirl-compose
+cd swirl-compose
+cp env.example .env
+```
+In `.env`, set the four REQUIRED values: `SWIRL_LICENSE=<license-json>`,
+`ADMIN_PASSWORD`, `SQL_USER`, and `SQL_PASSWORD` - never commit that file,
+never echo the license. Then `docker compose pull && docker compose up -d`,
+and watch first-run setup with `docker compose logs -f swirl-init`.
+Login is `admin` with the `ADMIN_PASSWORD` value from `.env` - unlike
+Community, Enterprise has no default password.
 
 Either way, wait for the stack: the `swirl` container logs show the init
 sequence (migrations, seed data) before Django starts - 

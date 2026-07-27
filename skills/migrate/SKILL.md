@@ -31,7 +31,8 @@ migrations are small compared to migrating an indexing search engine.
    note users and any RAG setup (Community: the `OPENAI_API_KEY` env var).
 2. **Stand up Enterprise** alongside, on a different port - do not overwrite
    the Community stack; you want rollback for free. Use `/swirl:install`
-   with the SWIRL-provided compose bundle and `<license-json>`.
+   with the public compose bundle (https://github.com/swirlai/docker-compose)
+   and `<license-json>`.
 3. **Carry providers over.** For each customized provider: GET it from
    Community, strip `id`, `owner`, and date fields, POST it to the
    Enterprise endpoint. Credentials are write-only - the export will not
