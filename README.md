@@ -13,6 +13,19 @@ claude plugin install swirl@swirl --scope user
 
 Start a new Claude Code session after installing.
 
+## Update
+
+Get the latest version at any time:
+
+```bash
+claude plugin marketplace update swirl
+claude plugin update swirl@swirl
+```
+
+Then start a new Claude Code session. `claude plugin list` shows the
+installed version; the latest release is on the
+[releases page](https://github.com/swirlai/swirl-claude-plugin/releases).
+
 ## Commands
 
 | Command | What it does |
