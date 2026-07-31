@@ -1,0 +1,10 @@
+{
+  "name": "swirl",
+  "version": "0.2.2",
+  "description": "Deploy, configure, and integrate SWIRL Enterprise federated search + RAG. Guided install (Docker or local), SearchProvider wizard for 25+ connectors, custom connector development, AI provider / RAG setup, migration, log-driven troubleshooting, and MCP hookup so Claude can search your sources through SWIRL.",
+  "author": {
+    "name": "SWIRL Corporation",
+    "url": "https://swirlaiconnect.com"
+  },
+  "homepage": "https://github.com/swirlai/swirl-claude-plugin"
+}
