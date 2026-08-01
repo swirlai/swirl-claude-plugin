@@ -47,7 +47,8 @@ trace in a log; find the trace before proposing a fix.
   mixed results outscales everything - normalize instead.
 - Embedding re-ranker down or misconfigured → check for embedding errors in
   the worker log; a full stack restart clears transient model-load
-  poisoning.
+  poisoning. The embedding model itself is the `reader`-role AI Provider,
+  not a settings-file entry - see `/swirl:rag` to inspect or change it.
 
 **RAG answer missing or wrong**
 - `ai_summary` is asynchronous - poll longer before declaring failure

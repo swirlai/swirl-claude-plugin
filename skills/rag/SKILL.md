@@ -2,8 +2,9 @@
 name: rag
 description: |
   Set up AI providers and RAG in SWIRL: connect an LLM (OpenAI, Anthropic,
-  Azure, Ollama, ...), assign roles, and tune grounded question-answering
-  over federated results. /swirl:rag
+  Azure, Ollama, ...), assign roles, tune grounded question-answering over
+  federated results, and configure the ranking models (embedding reader,
+  cross-encoder). /swirl:rag
 user_invocable: true
 ---
 
@@ -67,6 +68,40 @@ runtime behavior change - flag it as such.
    ```
    The `ai_summary` arrives asynchronously - poll the result; local models
    can take 60–90s on a cold load.
+
+## Ranking models: cross-encoder and embeddings (Enterprise)
+
+When the user asks about the cross-encoder, embedding models, the
+re-ranker, or "replacing spaCy": **do not go hunting through settings
+files, environment variables, or Python source** - ranking models are
+configured as AI Providers, the same surface as everything else in this
+skill. Enterprise images ship compiled code; the admin-facing
+configuration surfaces are the AI Providers (in the database) and the
+`.env` file, and ranking lives in AI Providers.
+
+What to know before touching anything:
+
+- Relevancy in SWIRL 5 Enterprise is three passes: keyword/BM25, embedding
+  re-ranking (the `reader` role), then a **cross-encoder** that reads
+  query and document together. The cross-encoder ships **on by default**
+  as the final pass - there is nothing to enable. Confirm it rather than
+  configure it: a result's explain output shows cross-encoder scores per
+  result.
+- The **embedding model is whatever AI Provider holds the `reader` role.**
+  The default reader is spaCy: small, CPU-cheap, fine for getting started.
+  To use a larger model, activate (or create) a reader-role AI Provider
+  pointing at it and make it the reader default, deactivating the spaCy
+  reader. The Enterprise compose stack's Ollama sidecar can serve
+  `mxbai-embed-large` (1024 dimensions) for exactly this - no new
+  infrastructure needed.
+- **AI Provider changes take effect immediately at query time.** No
+  restart, no redeploy.
+
+Verify the swap with a live search, not by re-reading config: the
+per-result explain output shows the ranking passes that actually ran, and
+the Ollama container's logs show embedding calls landing during the query.
+Larger embeddings cost latency per result - if search gets noticeably
+slower, that's the trade the user chose; say so rather than debugging it.
 
 ## Tuning knobs (change one at a time, re-test)
 
