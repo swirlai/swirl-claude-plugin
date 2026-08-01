@@ -2,7 +2,8 @@
 name: troubleshoot
 description: |
   Diagnose a misbehaving SWIRL deployment from its logs and live endpoints - 
-  no results, failing providers, RAG errors, auth failures, UI issues.
+  no results, failing providers, RAG errors, auth failures, UI issues - and
+  file a support ticket when diagnosis needs SWIRL's help.
   /swirl:troubleshoot [symptom]
 user_invocable: true
 ---
@@ -70,3 +71,41 @@ trace in a log; find the trace before proposing a fix.
    anything shared or in use.
 5. Re-run the reproduction. Done = the original symptom gone, verified live,
    not "the config looks right now".
+
+## When diagnosis needs SWIRL's help - file a ticket
+
+Escalate when you have a reproduction but no fix, when the evidence points
+at a product bug, or when the fix needs something only SWIRL can provide
+(a license change, an image rebuild, a hotfix).
+
+**Draft the ticket first**, so the user files something support can act on
+immediately:
+
+- **Title**: symptom + component ("Elastic provider returns 0 results
+  after 5.0 upgrade"), not "search broken".
+- **Environment**: edition (Community/Enterprise), SWIRL version (from
+  `/swirl/sapi/branding/` or the image tag), deployment type (Docker
+  Compose / Kubernetes / local), OS.
+- **Reproduction**: the narrowest command that shows the problem (usually
+  one curl), plus expected vs actual.
+- **Evidence**: the relevant log excerpts from django.log / the celery
+  worker log - scrubbed. Never include API keys, tokens, license JSON,
+  passwords, or the content of the user's documents. Placeholders like
+  `<api-key>` in place of real values.
+- **What was already tried**, so support doesn't repeat the diagnosis.
+
+**Then route it by edition**:
+
+- **Enterprise** → the SWIRL Help Desk:
+  https://swirlaiconnect.com/support-ticket (opens the ticket form).
+  You cannot submit the form yourself - present the drafted ticket text
+  for the user to paste, with the link.
+- **Community** → a GitHub issue on the open-source repo:
+  https://github.com/swirlai/swirl-search/issues. If the `gh` CLI is
+  installed and the user explicitly approves the drafted text, you may
+  file it for them: `gh issue create --repo swirlai/swirl-search`.
+- **Either edition** can also email support@swirlaiconnect.com with the
+  same drafted content.
+
+Leave the user with the ticket reference (issue URL or helpdesk
+confirmation) and a note of any workaround in place while they wait.

@@ -31,7 +31,9 @@ Figure out where the user is in their SWIRL journey and route them:
    - wire up the SWIRL MCP server.
 6. **Moving Community → Enterprise, or upgrading versions** →
    `/swirl:migrate` - inventory, config carry-over, verification.
-7. **Something is broken** → `/swirl:troubleshoot` - log-driven diagnosis.
+7. **Something is broken** → `/swirl:troubleshoot` - log-driven diagnosis,
+   with support-ticket escalation (Enterprise helpdesk, Community GitHub
+   issues) when diagnosis needs SWIRL's help.
 
 ## First actions
 
