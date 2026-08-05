@@ -57,6 +57,13 @@ trace in a log; find the trace before proposing a fix.
 - Bad answers with good sources → retrieval scope problem; fix the search
   before touching prompts.
 
+**Right after an upgrade or install (compose deployments)**
+- Service exits instantly with `<word>: command not found` in the log →
+  unquoted value in `.env` (usually the license; it is sourced as shell).
+- `password authentication failed` in the init container on a "fresh"
+  install → stale named Docker volume reused old DB init.
+- Full upgrade symptom catalog and phase discipline: `/swirl:migrate`.
+
 **UI looks stale after an upgrade**
 - Hard refresh (Cmd-Shift-R) - the Galaxy bundle is aggressively cached.
 - Verify the served bundle actually changed before debugging "the bug".
