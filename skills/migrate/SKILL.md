@@ -169,11 +169,17 @@ tar czf /app/backups/app-pre-<ver>-<date>.tar.gz --exclude=/app/backups --exclud
   USE_CERT=true`. Older field installs often have hand-modified nginx
   templates and a different cert directory: move the cert files into the
   new layout and use the stock templates; do not carry patched ones.
-- **Licensing**: 5.x licenses carry entitlement fields, including the
-  separately licensed Semantic Cache. A 4.x-era license validates on 5.0
-  but cache features stay off and the banner shows the cache as
-  unlicensed. Every upgrading customer needs a re-issued license; the
-  cache entitlement is a commercial decision, not a config flag.
+- **Licensing**: an existing 4.x license **works unchanged on 5.0**
+  through its expiration - the signature covers only the fields present,
+  so older payloads validate as-is. **No license re-issue is required to
+  upgrade.** The separately licensed Semantic Cache is enabled only when
+  the license carries the cache entitlement; a customer cannot self-enable
+  it (editing the payload invalidates the signature). Without it, behavior
+  is clean and inert: the banner shows the cache as unlicensed, the cache
+  provider returns no results without errors, cache-dependent features do
+  not appear in the UI, and search runs normally. A new license is needed
+  only to add the cache entitlement (a commercial decision) or at renewal
+  - set that expectation instead of telling every customer to request one.
 - **Migrations are NOT purely additive** in the 4.4 → 5.0 chain - some
   steps drop schema. Two consequences: the old version must never run
   against a migrated database, and app rollback requires a database
