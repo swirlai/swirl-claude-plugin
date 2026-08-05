@@ -153,7 +153,12 @@ tar czf /app/backups/app-pre-<ver>-<date>.tar.gz --exclude=/app/backups --exclud
   containers are retired and linger as stopped orphans after upgrade -
   remove them only after verification passes.
 - **Rebuild `.env` from the new `env.example`** - do not patch the old
-  file; 5.0 adds many new keys with correct defaults. Carry over: license
+  file; 5.0 adds many new keys with correct defaults. When carrying any
+  value between env files, normalize its quoting: strip existing quotes
+  and re-wrap values containing spaces or JSON in single quotes. A value
+  that worked under a dotenv-style loader can kill shell sourcing. Run
+  `bash -c 'source .env'` after every carry, not only after license
+  edits. Carry over: license
   (the NEW value, single-quoted), `ADMIN_PASSWORD`/`ADMIN_USER_EMAIL`,
   all `SQL_*`, `SWIRL_FQDN`/`ALLOWED_HOSTS`/`CSRF_TRUSTED_ORIGINS`/
   `PROTOCOL`, `USE_*` flags, Microsoft auth values, and any custom
@@ -195,6 +200,10 @@ tar czf /app/backups/app-pre-<ver>-<date>.tar.gz --exclude=/app/backups --exclud
   docker exec swirl_app python swirl.py load_branding
   docker exec swirl_app python manage.py reconcile_ollama_url
   ```
+  Then restart with a full profile stop and a fresh service start
+  (`COMPOSE_PROFILES=all docker compose stop`, then the service script or
+  systemd unit) - do not guess compose service names for a targeted
+  restart.
 
 ## Database move: local container → external PostgreSQL
 
@@ -267,6 +276,13 @@ client commands via the `postgres:16` image already on the host.
   install → a stale named Docker volume reused old DB init. Remove the
   stale volumes or expect the old data. (Labs and re-installs only - in
   a customer upgrade, the volume IS the data.)
+- Startup fails with `Conflict. The container name ... is already in
+  use` → a stale stopped container from a previous deployment on the same
+  host (the compose file pins container names). Remove the stale stopped
+  container, then start.
+- Setup flag present but provider count near zero on a "fresh"
+  deployment → an aborted first start wrote the one-time flag before
+  seeds loaded. `load_data` is add-only and reconciles safely.
 - Compose orphan warnings after upgrade → retired services; remove the
   stopped containers after verification, not before.
 - Loaded images won't run on the customer VM → arm64 images side-loaded

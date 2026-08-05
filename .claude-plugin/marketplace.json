@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "SWIRL integration toolkit for Claude Code - Community and Enterprise",
-    "version": "0.3.0"
+    "version": "0.3.1"
   },
   "plugins": [
     {
       "name": "swirl",
       "strict": false,
       "description": "Deploy, configure, and integrate SWIRL federated search + RAG - Community and Enterprise. Guided install (Docker or local), SearchProvider wizard for 25+ connectors, custom connector development, AI provider / RAG setup, Community-to-Enterprise and version migration, log-driven troubleshooting, and MCP hookup so Claude can search your sources through SWIRL.",
-      "version": "0.3.0",
+      "version": "0.3.1",
       "author": {
         "name": "SWIRL Corporation",
         "url": "https://swirlaiconnect.com"
