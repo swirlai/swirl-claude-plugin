@@ -20,7 +20,9 @@ citations.
 
 Figure out where the user is in their SWIRL journey and route them:
 
-1. **No SWIRL running yet** → `/swirl:install` - guided Docker or local install.
+1. **No SWIRL running yet** → `/swirl:install` - guided Docker or local
+   install; or `/swirl:railway` for the one-click hosted template if they
+   prefer not to run infrastructure themselves.
 2. **SWIRL running, wants to add a data source** → `/swirl:provider` - the
    SearchProvider wizard (25+ built-in connectors).
 3. **Source exists but no built-in connector fits** → `/swirl:connector` - 

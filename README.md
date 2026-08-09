@@ -32,6 +32,7 @@ installed version; the latest release is on the
 |---|---|
 | `/swirl:start` | Assess where you are and route to the right skill |
 | `/swirl:install` | Guided install - Docker Compose or local - with live verification |
+| `/swirl:railway` | Deploy and manage SWIRL on Railway - the one-click hosted template |
 | `/swirl:provider` | SearchProvider wizard: connect a source using 25+ built-in connectors |
 | `/swirl:connector` | Develop a custom connector when no built-in fits |
 | `/swirl:rag` | Connect an LLM (OpenAI, Anthropic, Azure, Ollama, …) and tune grounded RAG |

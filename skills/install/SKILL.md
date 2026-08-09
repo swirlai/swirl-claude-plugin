@@ -9,7 +9,13 @@ user_invocable: true
 # Install SWIRL
 
 Walk the user through getting SWIRL running, then verify it actually works
-with a live search. Ask which edition they have before anything else:
+with a live search.
+
+Hosted alternative: if the user would rather not run Docker at all, the
+one-click Railway template deploys the full Enterprise stack into their
+own Railway workspace - see `/swirl:railway`.
+
+Ask which edition they have before anything else:
 
 - **SWIRL Community** - open source, https://github.com/swirlai/swirl-search
 - **SWIRL Enterprise** - licensed; the Docker Compose bundle is public at
