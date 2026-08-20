@@ -44,6 +44,12 @@ Both editions are supported: skills call out the differences where they
 matter (install paths, RAG configuration, and the MCP server, which is an
 Enterprise feature).
 
+## See it in action
+
+[![Claude + SWIRL over MCP - 2 minute demo](https://img.youtube.com/vi/a6QNmvLZi4Q/maxresdefault.jpg)](https://www.youtube.com/watch?v=a6QNmvLZi4Q)
+
+Claude Code searching enterprise sources through SWIRL's MCP server - the loop this plugin sets up with `/swirl:mcp`. More videos on the [SWIRL channel](https://www.youtube.com/@swirlaiconnect).
+
 ## Typical flows
 
 **New deployment:**
